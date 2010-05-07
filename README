@@ -1,0 +1,41 @@
+PropEditor program as of the end of week 5 (GUI programming with all of week 5's event handling)
+
+Running the program: 
+
+java net.widgetron.propeditor.PropEditorView
+
+
+(run from the directory that SuggestionFile.txt is in, build.prop files are now openable with the file opening dialog)
+
+I have included an example build.prop and SuggestionFile.txt in this zip. 
+
+Main screen: 
+Clicking 'Open File' button opens a file dialog. Opening anything other than a readable *.prop file (based on extension only at this point) will result in an error. 
+	
+Editor screen: 
+	TODO: possibly split property and value to right/left justified; wrap?
+Clicking on a prop will give a Suggestion window of values for the clicked property; the suggestion file is less sparse at this time but many properties have only one suggestion. 
+Clicking cancel will return to the Main screen. 
+Clicking save saves the file under its current name, saveas opens the file dialog to save. there is no name checking on the save (so you can saveas build.prop.bak). Once 'saveas' is used and a different filename is chosen, 'save' will save to that file. 
+
+Suggestion screen: 
+Clicking cancel will return to the Editor screen; 
+Clicking a suggested VALUE will change the selected entry and return to the Editor screen; Selecting "Manual entry" will pop up a manual entry dialog.
+Clicking a suggested NAME (from Add in editor) will suggest values per above for the new property. 
+
+
+TODO: actually validate input, I'm still researching what is and isn't valid; add error messages for invalid input
+	INWORK -- error message is present but I need to work on the RegEx still; all names/values are currently accepted
+valid for propvals: 
+	comma, periood, space, alphanum, slash, colon
+	invalid: hash, =
+valid for propnames:
+	alphanum, period, underscore
+	invaldi: hash, =, everything else?
+
+TODO: move some of the logic back into PropEditor from both PropFileView and PropFile. 
+	INWORK
+
+There's a 6th class called SuggestionFileMaker that uses PropFile and SuggestionFile to add any new Property names or values to the SuggestionFile.txt
+
+TODO: clean up commented out code -- INWORK, mostly done
